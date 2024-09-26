@@ -1,0 +1,5 @@
+Apple 3
+Banana 2
+Orange 5
+Cup 2
+Pencil 10
