@@ -115,7 +115,6 @@ class BikeBuilder {
 public:
     virtual void setFrame() = 0;
     virtual void setTire() = 0;
-    virtual Bike getBike() = 0;
     virtual ~BikeBuilder() {}
 };
 
@@ -129,7 +128,7 @@ public:
         bike.setTire(unique_ptr<Tire>(new KnobbyTire()));
     }
 
-    virtual Bike getBike() {
+    Bike getBike() {
         return bike;
     }
 private:
@@ -146,7 +145,7 @@ public:
         bike.setTire(unique_ptr<Tire>(new SlimTrie()));
     }
 
-    virtual Bike getBike() {
+    Bike getBike() {
         return bike;
     }
 private:
@@ -155,13 +154,17 @@ private:
 
 class Director {
 public:
-    Director(unique_ptr<BikeBuilder> builder) : m_builder(std::move(builder)) {}
+    Director() : m_builder(nullptr) {}
+    Director(shared_ptr<BikeBuilder> builder) : m_builder(builder) {}
 
-    Bike build() {
+    void build() {
         m_builder->setFrame();
         m_builder->setTire();
-        return m_builder->getBike();
+    }
+
+    void setBuilder(shared_ptr<BikeBuilder> builder) {
+        m_builder = builder;
     }
 private:
-    unique_ptr<BikeBuilder> m_builder;
+    shared_ptr<BikeBuilder> m_builder;
 };
