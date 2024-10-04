@@ -9,3 +9,4 @@ Design patterns can be organized into groups based on what kind of problem they 
 
 ## Creational Patterns
 - [Singleton](./doc/singleton/README.md)
+- [Factory Method](./doc/factory_method/README.md)
