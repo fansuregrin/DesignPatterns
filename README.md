@@ -8,4 +8,4 @@ Design patterns can be organized into groups based on what kind of problem they 
 - **Behavioral Patterns** provide communication between objects and realizing these patterns.
 
 ## Creational Patterns
-### [Singleton](./doc/singleton/README.md)
+- [Singleton](./doc/singleton/README.md)
